@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Advanced Financial Accounting – MCQ Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e4; --card:#fffdf7; --ink:#1d2b26; --muted:#5f6b64; --line:#d9d2bf;
+  --green:#1f5d4a; --green-d:#174538; --red:#b8412f; --amber:#b7791f; --sel:#e3efe9;
+  --shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px rgba(29,43,38,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#141b18; --card:#1b2521; --ink:#ece7d8; --muted:#a2aca5; --line:#33413a; --green:#5fb497; --green-d:#7cc9ad; --red:#e07a67; --amber:#e0a94a; --sel:#22392f;
+  --shadow:0 8px 24px rgba(0,0,0,.35);}
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;min-height:100vh;
+  background-image:repeating-linear-gradient(0deg,transparent 0 31px,color-mix(in srgb,var(--line) 45%,transparent) 31px 32px)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;margin:0;letter-spacing:-.01em}
+.screen{display:none;max-width:980px;margin:0 auto;padding:28px 18px 60px}
+.screen.active{display:block}
+.brand{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);position:relative}
+.ledger{padding:28px 28px 28px 56px}
+.ledger::before{content:"";position:absolute;left:36px;top:0;bottom:0;border-left:2px solid color-mix(in srgb,var(--red) 55%,transparent)}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin-bottom:8px}
+.lead{color:var(--muted);margin:0 0 24px;max-width:56ch}
+.subject-btn{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;
+  background:var(--card);border:1.5px solid var(--green);border-radius:6px;padding:20px 22px;transition:transform .12s,background .12s}
+.subject-btn:hover,.subject-btn:focus-visible{background:var(--sel);transform:translateX(3px);outline:none}
+.subject-btn h2{font-size:22px}
+.subject-btn small{color:var(--muted);display:block;margin-top:2px}
+.arrow{font-size:26px;color:var(--green)}
+.rules{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:14.5px}
+.rules li{padding-left:22px;position:relative}
+.rules li::before{content:"–";position:absolute;left:4px;color:var(--red)}
+label{display:block;font-weight:600;font-size:14px;margin:0 0 6px}
+input[type=text]{width:100%;font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:5px;background:var(--paper);color:var(--ink)}
+input[type=text]:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 25%,transparent)}
+.field{margin-bottom:18px;max-width:440px}
+.err{color:var(--red);font-size:13.5px;min-height:20px;margin:-6px 0 10px}
+.btn{font:inherit;font-weight:600;cursor:pointer;border-radius:5px;padding:12px 22px;border:1.5px solid var(--green);background:var(--green);color:#fff}
+.btn:hover{background:var(--green-d)}
+.btn.ghost{background:transparent;color:var(--green)}
+.btn.ghost:hover{background:var(--sel)}
+.btn.danger{background:var(--red);border-color:var(--red)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+/* exam */
+.topbar{position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:18px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.who{font-size:13.5px;color:var(--muted)} .who b{color:var(--ink)}
+.timer{font-family:"IBM Plex Mono",monospace;font-size:24px;font-weight:500;padding:4px 14px;border:1.5px solid var(--green);border-radius:5px;color:var(--green)}
+.timer.low{color:var(--red);border-color:var(--red);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.55}}
+.strikes{font-size:13px;font-weight:600;color:var(--red)}
+.layout{display:grid;grid-template-columns:1fr 230px;gap:20px;align-items:start}
+@media(max-width:760px){.layout{grid-template-columns:1fr}}
+.qno{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:10px}
+.qtext{font-family:Fraunces,Georgia,serif;font-size:clamp(18px,2.6vw,22px);font-weight:500;line-height:1.35;margin:0 0 20px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit;background:var(--paper);
+  border:1.5px solid var(--line);border-radius:5px;padding:12px 14px;margin-bottom:10px;transition:border-color .1s,background .1s}
+.opt:hover{border-color:var(--green)}
+.opt .k{font-family:"IBM Plex Mono",monospace;font-weight:500;min-width:22px;height:22px;border:1.5px solid var(--muted);border-radius:50%;display:grid;place-items:center;font-size:12px;flex:none;margin-top:1px}
+.opt.sel{background:var(--sel);border-color:var(--green)}
+.opt.sel .k{background:var(--green);border-color:var(--green);color:#fff}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}
+.palette{padding:16px}
+.palette h3{font-size:15px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.pb{font:inherit;font-family:"IBM Plex Mono",monospace;font-size:13px;cursor:pointer;padding:7px 0;border-radius:4px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink)}
+.pb.done{background:var(--green);border-color:var(--green);color:#fff}
+.pb.cur{outline:2.5px solid var(--amber);outline-offset:1px}
+.legend{font-size:12.5px;color:var(--muted);margin:12px 0 14px}
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(10,15,13,.72);display:none;place-items:center;z-index:50;padding:18px}
+.overlay.show{display:grid}
+.modal{max-width:460px;width:100%;padding:26px}
+.modal h2{color:var(--red);font-size:24px;margin-bottom:10px}
+.modal p{margin:0 0 12px}
+/* result */
+.big{font-family:Fraunces,Georgia,serif;font-size:clamp(48px,10vw,84px);font-weight:700;line-height:1;color:var(--green)}
+.big span{font-size:.4em;color:var(--muted)}
+table.res{border-collapse:collapse;margin:22px 0;width:100%;max-width:460px}
+table.res td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.res td:last-child{text-align:right;font-family:"IBM Plex Mono",monospace;font-weight:500}
+.flag{color:var(--red)}
+.sync{font-size:13px;color:var(--muted);margin-top:14px}
+</style>
+</head>
+<body>
+
+<!-- 1. SUBJECT -->
+<section id="s-subject" class="screen active">
+  <div class="brand">MCQ ASSESSMENT PORTAL</div>
+  <div class="card ledger">
+    <h1>Select your subject</h1>
+    <p class="lead">Choose the subject below to begin. You will be asked for your name and register number on the next screen.</p>
+    <button class="subject-btn" id="pick-subject">
+      <div><h2>Advanced Financial Accounting</h2><small>25 questions · 15 minutes · 25 marks</small></div>
+      <span class="arrow">→</span>
+    </button>
+    <ul class="rules">
+      <li>25 questions are drawn at random: 15 easy, 5 medium and 5 hard.</li>
+      <li>There is no negative marking for wrong answers.</li>
+      <li>Do not switch browser tabs or windows. Every switch is recorded as suspected malpractice and deducts 10% of the total marks.</li>
+      <li>The test submits automatically when the timer reaches zero.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2. DETAILS -->
+<section id="s-details" class="screen">
+  <div class="brand">ADVANCED FINANCIAL ACCOUNTING</div>
+  <div class="card ledger">
+    <h1>Student details</h1>
+    <p class="lead">Enter your details exactly as they appear in college records.</p>
+    <div class="field"><label for="name">Full name</label><input type="text" id="name" autocomplete="off"></div>
+    <div class="field"><label for="reg">Register number</label><input type="text" id="reg" autocomplete="off"></div>
+    <div class="err" id="d-err"></div>
+    <div class="row">
+      <button class="btn ghost" id="back1">Back</button>
+      <button class="btn" id="start">Start exam</button>
+    </div>
+  </div>
+</section>
+
+<!-- 3. EXAM -->
+<section id="s-exam" class="screen">
+  <div class="topbar">
+    <div class="who">Candidate: <b id="x-name"></b> · Reg. No: <b id="x-reg"></b><br><span class="strikes" id="x-strikes"></span></div>
+    <div class="timer" id="timer">15:00</div>
+  </div>
+  <div class="layout">
+    <div class="card ledger" id="qcard">
+      <div class="qno" id="qno"></div>
+      <p class="qtext" id="qtext"></p>
+      <div id="opts"></div>
+      <div class="nav">
+        <button class="btn ghost" id="prev">← Previous</button>
+        <button class="btn ghost" id="clear">Clear answer</button>
+        <button class="btn" id="next">Next →</button>
+      </div>
+    </div>
+    <aside class="card palette">
+      <h3>Questions</h3>
+      <div class="grid" id="grid"></div>
+      <div class="legend" id="legend"></div>
+      <button class="btn danger" style="width:100%" id="submit">Submit test</button>
+    </aside>
+  </div>
+</section>
+
+<!-- 4. RESULT -->
+<section id="s-result" class="screen">
+  <div class="brand">TEST SUBMITTED</div>
+  <div class="card ledger">
+    <h1 id="r-title">Your result</h1>
+    <p class="lead" id="r-who"></p>
+    <div class="big" id="r-score"></div>
+    <table class="res">
+      <tr><td>Questions attempted</td><td id="r-att"></td></tr>
+      <tr><td>Correct answers</td><td id="r-cor"></td></tr>
+      <tr><td>Wrong answers</td><td id="r-wro"></td></tr>
+      <tr><td>Not attempted</td><td id="r-una"></td></tr>
+      <tr><td>Marks before penalty</td><td id="r-raw"></td></tr>
+      <tr><td>Tab-switch deduction</td><td id="r-pen"></td></tr>
+      <tr><td>Suspected malpractice</td><td id="r-mal"></td></tr>
+    </table>
+    <div class="sync" id="r-sync"></div>
+  </div>
+</section>
+
+<!-- WARNING MODAL -->
+<div class="overlay" id="warn">
+  <div class="card modal">
+    <h2>⚠ Warning: tab switch detected</h2>
+    <p>You left the exam window. This has been recorded as <b>suspected malpractice</b> and reported to your examiner.</p>
+    <p id="warn-detail"></p>
+    <p>The exam continues and your timer has not stopped. Please do not leave this page again.</p>
+    <button class="btn" id="warn-ok">I understand, continue exam</button>
+  </div>
+</div>
+
+<!-- CONFIRM SUBMIT MODAL -->
+<div class="overlay" id="confirm">
+  <div class="card modal">
+    <h2 style="color:var(--ink)">Submit the test?</h2>
+    <p id="confirm-text"></p>
+    <div class="row">
+      <button class="btn ghost" id="c-cancel">Go back</button>
+      <button class="btn danger" id="c-ok">Yes, submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================ CONFIGURATION ============================ */
+const CONFIG = {
+  // Paste your deployed Google Apps Script Web App URL here (ends with /exec)
+  SCRIPT_URL: "https://script.google.com/macros/s/AKfycbybUqfRMVm7q-UgnvBB1FnqbhY5Sd5QTUZsY5T-XN4SxWhq2LmW17QeMb6ZkE4sx0pS3w/exec",
+  SUBJECT: "Advanced Financial Accounting",
+  EXAM_MINUTES: 15,
+  PICK: { easy: 15, medium: 5, hard: 5 },   // 25 questions in total
+  MARKS_PER_QUESTION: 1,
+  TAB_SWITCH_PENALTY_PERCENT: 10,           // deducted per tab switch
+  // "total"    -> 10% of total marks (2.5 marks) per switch
+  // "obtained" -> 10% of the marks the student has earned, per switch (applied one after another)
+  PENALTY_BASE: "total"
+};
+
+/* ============================ QUESTION BANK ============================ */
+// Difficulty is taken from the Excel layout: in each block of 20 questions,
+// the first 10 are easy, the next 5 medium and the last 5 hard.
+const BANK = [{"id": 1, "q": "Risk in capital budgeting arises primarily because costs and benefits extend over a long period during which conditions can change in:", "o": ["Predictable ways", "Unanticipated ways", "Guaranteed patterns", "Constant proportions"], "a": 1, "l": "easy"}, {"id": 2, "q": "Which technique measures risk in terms of variability of actual returns compared to estimated returns?", "o": ["Payback Period", "Standard Deviation", "Accounting Rate of Return", "Net Present Value"], "a": 1, "l": "easy"}, {"id": 3, "q": "The situation where no information is available to formulate a probability distribution of cash flows is termed:", "o": ["Risk", "Certainty", "Uncertainty", "Diversification"], "a": 2, "l": "easy"}, {"id": 4, "q": "Risk specific to a particular project like errors in cash flow estimation is called:", "o": ["Company-specific risk", "Project-specific risk", "Market risk", "Industry-specific risk"], "a": 1, "l": "easy"}, {"id": 5, "q": "Downgrading of a company's credit rating is an example of which type of risk?", "o": ["Industry-specific risk", "Company-specific risk", "International risk", "Market risk"], "a": 1, "l": "easy"}, {"id": 6, "q": "Regulatory restrictions on leather or brewery industries represent which type of risk?", "o": ["Industry-specific risk", "Project-specific risk", "Company-specific risk", "Financial risk"], "a": 0, "l": "easy"}, {"id": 7, "q": "Risk Adjusted Discount Rate (RADR) is equal to Risk-Free Rate plus:", "o": ["Cost of Debt", "Risk Premium", "Tax Rate", "Inflation Rate"], "a": 1, "l": "easy"}, {"id": 8, "q": "If government securities yield 6% with zero risk, 6% represents the:", "o": ["Risk Premium", "Risk-Free Rate", "Cost of Equity", "Market Return"], "a": 1, "l": "easy"}, {"id": 9, "q": "The Certainty Equivalent Coefficient (alpha) ranges between:", "o": ["-1 and +1", "0 and 1", "1 and 10", "0 and 100"], "a": 1, "l": "easy"}, {"id": 10, "q": "In Certainty Equivalent approach, as the risk of a cash flow increases, the certainty equivalent coefficient:", "o": ["Increases", "Decreases", "Remains constant", "Becomes zero always"], "a": 1, "l": "easy"}, {"id": 11, "q": "Which discount rate is used to discount cash flows in the Certainty Equivalent Method?", "o": ["Cost of Capital (Ke)", "Risk-Adjusted Discount Rate", "Risk-Free Rate of Interest", "Weighted Average Cost of Capital"], "a": 2, "l": "medium"}, {"id": 12, "q": "Why is adjustment of risk necessary in capital budgeting decisions?", "o": ["To eliminate taxes completely", "To evaluate if returns are proportionate to risks borne over alternate investments", "To guarantee positive NPV for all projects", "To avoid calculating cost of capital"], "a": 1, "l": "medium"}, {"id": 13, "q": "Risks arising from macroeconomic factors like changes in central bank monetary policies are classified as:", "o": ["Competition risk", "Risk due to Economic conditions", "Project-specific risk", "Company-specific risk"], "a": 1, "l": "medium"}, {"id": 14, "q": "What is a major limitation of the Risk-Adjusted Discount Rate (RADR) method?", "o": ["It is too complex to calculate", "Arriving at the risk premium can be subjective and arbitrary", "It ignores the risk-free rate", "It cannot be applied to expansion projects"], "a": 1, "l": "medium"}, {"id": 15, "q": "Why is Certainty Equivalent Method considered conceptually superior to RADR?", "o": ["It assumes risk increases constantly with time", "It does not assume that risk increases with time at a constant rate", "It uses higher discount rates for later years", "It ignores shareholder risk perception"], "a": 1, "l": "medium"}, {"id": 16, "q": "When evaluating a project under Certainty Equivalent method, if risky cash flow is $100,000 and alpha is 0.8, the certain cash flow is:", "o": ["$80,000", "$125,000", "$100,000", "$20,000"], "a": 0, "l": "hard"}, {"id": 17, "q": "If a thermal power project faces coal supply shortages due to mine disruption, this risk is best categorized as:", "o": ["Competition risk", "Market risk", "International risk", "Legal risk"], "a": 1, "l": "hard"}, {"id": 18, "q": "Which statement correctly reflects the relationship between risk and certainty equivalent coefficient (alpha)?", "o": ["Higher risk results in higher alpha", "Higher risk results in lower alpha", "Risk and alpha have a direct linear relationship", "Alpha is independent of risk levels"], "a": 1, "l": "hard"}, {"id": 19, "q": "Why is the Certainty Equivalent Method less frequently used in corporate decision making despite its theoretical soundness?", "o": ["It requires market beta values", "It is difficult to specify a series of certainty equivalent coefficients objectively", "It cannot adjust for inflation", "It is prohibited by accounting standards"], "a": 1, "l": "hard"}, {"id": 20, "q": "Under RADR, if the risk-free rate is 5%, market return is 12%, and project risk premium is assessed at 4%, what is the RADR?", "o": ["9%", "17%", "12%", "16%"], "a": 0, "l": "hard"}, {"id": 21, "q": "Which financial decision determines the proportion of earnings paid out to shareholders versus retained in business?", "o": ["Financing decision", "Investment decision", "Dividend decision", "Liquidity decision"], "a": 2, "l": "easy"}, {"id": 22, "q": "Dividends paid periodically out of Earnings After Interest and Tax in cash are called:", "o": ["Stock dividend", "Cash dividend", "Bond dividend", "Property dividend"], "a": 1, "l": "easy"}, {"id": 23, "q": "A dividend paid in the form of company stock given to existing shareholders is also known as:", "o": ["Bonus issue", "Script dividend", "Property dividend", "Interim dividend"], "a": 0, "l": "easy"}, {"id": 24, "q": "Bond dividend is also known as:", "o": ["Cash dividend", "Script dividend", "Property dividend", "Stock dividend"], "a": 1, "l": "easy"}, {"id": 25, "q": "Under Walter's Model, if internal rate of return (r) exceeds cost of capital (k), the firm is categorized as a:", "o": ["Declining firm", "Normal firm", "Growth firm", "Stagnant firm"], "a": 2, "l": "easy"}, {"id": 26, "q": "According to Walter's Model, what is the optimum dividend payout ratio for a growth firm (r > k)?", "o": ["100%", "50%", "0%", "25%"], "a": 2, "l": "easy"}, {"id": 27, "q": "For a declining firm where r < k, Walter's Model suggests an optimum payout ratio of:", "o": ["0%", "50%", "100%", "20%"], "a": 2, "l": "easy"}, {"id": 28, "q": "In Gordon's Growth Model, the growth rate (g) is calculated as:", "o": ["g = k * r", "g = b * r", "g = b / r", "g = k - r"], "a": 1, "l": "easy"}, {"id": 29, "q": "The 'Bird-in-the-Hand' argument implies that rational investors prefer:", "o": ["Future uncertain capital gains", "Current or near dividends over future dividends", "Retained earnings over cash dividends", "Long-term bonds over equity"], "a": 1, "l": "easy"}, {"id": 30, "q": "Which theory advocates that dividend policy has no effect on the value of the firm?", "o": ["Walter's Model", "Gordon's Model", "Modigliani-Miller (MM) Hypothesis", "Traditional Model"], "a": 2, "l": "easy"}, {"id": 31, "q": "In a normal firm where r = k, what is the effect of changing the dividend payout ratio according to Walter's Model?", "o": ["Share price increases", "Share price decreases", "Share price remains unchanged", "Share price becomes zero"], "a": 2, "l": "medium"}, {"id": 32, "q": "What type of dividend policy involves paying a fixed low dividend per share plus an additional amount in high profit years?", "o": ["Regular dividend policy", "Constant payout ratio policy", "Stable rupee dividend + extra dividend", "Irregular dividend policy"], "a": 2, "l": "medium"}, {"id": 33, "q": "Property dividend refers to distributing dividends in the form of:", "o": ["Company's own unissued stock", "Promissory note bonds", "Shares of a subsidiary or physical assets/inventories", "Government securities"], "a": 2, "l": "medium"}, {"id": 34, "q": "Under MM Hypothesis, if a firm pays cash dividends without sufficient cash, it issues new shares. Shareholders experience:", "o": ["A net gain equal to dividend", "Capital loss due to dilution of control and EPS equal to dividend received", "Tax exemption on future capital gains", "Doubling of market share"], "a": 1, "l": "medium"}, {"id": 35, "q": "What is meant by 'Home-made dividend' under MM Hypothesis?", "o": ["Dividend paid from cash reserves", "Cash realized by a shareholder by selling a part of their holdings in the market", "Bonus shares issued by management", "Tax refund received on dividend income"], "a": 1, "l": "medium"}, {"id": 36, "q": "In Walter's Model formula P = [D + (r/ke)(E - D)] / ke, what does 'E - D' represent?", "o": ["Dividends per share", "Retained earnings per share", "Earnings per share", "Market price per share"], "a": 1, "l": "hard"}, {"id": 37, "q": "Which of the following is a key criticism of Walter's Model?", "o": ["It assumes external equity financing is used extensively", "It mixes dividend policy with investment policy by assuming investment is funded solely by retained earnings", "It assumes cost of capital varies dynamically with risk", "It applies only to leveraged firms"], "a": 1, "l": "hard"}, {"id": 38, "q": "In Gordon's Model formula P = E(1-b) / (ke - br), what happens to price P if payout ratio (1-b) decreases when r < ke?", "o": ["Price increases", "Price decreases", "Price remains constant", "Price becomes infinite"], "a": 1, "l": "hard"}, {"id": 39, "q": "Under the Bird-in-Hand argument, why does discount rate (ke) increase as retention rate increases?", "o": ["Because future dividends are perceived as less risky", "Because distant future cash flows carry higher uncertainty and risk", "Because cost of debt decreases", "Because tax rates on dividends increase"], "a": 1, "l": "hard"}, {"id": 40, "q": "Under MM Hypothesis, what is the basic formula to calculate end-of-period price P1 from beginning price P0, cost of equity ke, and dividend D1?", "o": ["P1 = P0(1 + ke) - D1", "P1 = P0(1 - ke) + D1", "P1 = P0 / (1 + ke) + D1", "P1 = (P0 + D1) * (1 + ke)"], "a": 0, "l": "hard"}, {"id": 41, "q": "In India, the legal term commonly used for a merger is:", "o": ["Takeover", "Amalgamation", "Demerger", "Joint Venture"], "a": 1, "l": "easy"}, {"id": 42, "q": "A merger between two companies operating in the same industry and direct competitors is called a:", "o": ["Vertical Merger", "Horizontal Merger", "Conglomerate Merger", "Market-Extension Merger"], "a": 1, "l": "easy"}, {"id": 43, "q": "A merger between companies operating at different stages of the same production/supply chain is a:", "o": ["Horizontal Merger", "Vertical Merger", "Conglomerate Merger", "Product-Extension Merger"], "a": 1, "l": "easy"}, {"id": 44, "q": "A merger between completely unrelated business entities operating in distinct markets is known as a:", "o": ["Conglomerate Merger", "Vertical Merger", "Horizontal Merger", "Market-Extension Merger"], "a": 0, "l": "easy"}, {"id": 45, "q": "When a private company acquires a public shell company to bypass lengthy IPO listing procedures, it is called a:", "o": ["Forward Merger", "Reverse Merger", "Conglomerate Merger", "Product Extension"], "a": 1, "l": "easy"}, {"id": 46, "q": "Selling off a division or undertaking of a company to create a separate entity or raise cash is known as:", "o": ["Divestiture", "Leveraged Buyout", "Management Buyout", "Reverse Merger"], "a": 0, "l": "easy"}, {"id": 47, "q": "An acquisition financed predominantly (50% or more) using borrowed funds is termed a:", "o": ["Management Buyout (MBO)", "Leveraged Buyout (LBO)", "Reverse Takeover", "Equity Buyback"], "a": 1, "l": "easy"}, {"id": 48, "q": "When a company buys back its own outstanding shares from the open market, it is called:", "o": ["Equity Buyback", "Divestiture", "Tender Offer", "Greenmail"], "a": 0, "l": "easy"}, {"id": 49, "q": "What defensive tactic involves offering target shareholders rights to purchase shares at a discount to discourage hostiles?", "o": ["Poison Pill", "White Knight", "Golden Parachute", "Greenmail"], "a": 0, "l": "easy"}, {"id": 50, "q": "A friendly company that acquires a target company to save it from a hostile takeover is referred to as a:", "o": ["White Knight", "Black Knight", "Bear Hug", "Poison Pill"], "a": 0, "l": "easy"}, {"id": 51, "q": "How is the Exchange Ratio calculated in a stock-for-stock merger deal?", "o": ["Acquirer Share Price / Target Share Price", "Target Share Price / Acquirer Share Price", "Target Earnings / Acquirer Earnings", "Target Assets / Acquirer Assets"], "a": 1, "l": "medium"}, {"id": 52, "q": "What is a 'Bear Hug' takeover strategy?", "o": ["Accumulating target shares silently in the stock market", "Threatening the target board with an open offer so they agree to terms", "Offering target management extra bonuses", "Making a counter-bid for the acquiring company"], "a": 1, "l": "medium"}, {"id": 53, "q": "What defensive tactic involves the target company offering to buy back its shares from a potential bidder at a premium?", "o": ["Poison Pill", "Greenmail", "White Squire", "Pac-man Defence"], "a": 1, "l": "medium"}, {"id": 54, "q": "What is the 'Pac-Man Defence' in corporate takeovers?", "o": ["Target company issuing convertible debentures", "Target company making a counter bid to acquire the acquirer company", "Target selling off its core assets", "Target offering golden parachutes to executives"], "a": 1, "l": "medium"}, {"id": 55, "q": "What is the primary operational objective behind executing a Leveraged Buyout (LBO)?", "o": ["To reduce promoter shareholding", "To improve operational efficiency, increase cash flow, and pay off acquisition debt", "To avoid regulatory compliance", "To convert a private firm into a public listed firm"], "a": 1, "l": "medium"}, {"id": 56, "q": "What distinguishes a 'Market-Extension Merger' from a 'Product-Extension Merger'?", "o": ["Market-extension involves same product in different markets; product-extension involves related products in the same market", "Market-extension involves unrelated products; product-extension involves vertical supply chains", "Market-extension is hostile; product-extension is always friendly", "Market-extension uses debt; product-extension uses cash only"], "a": 0, "l": "hard"}, {"id": 57, "q": "What is a 'White Squire' defense tactic?", "o": ["Selling a controlling stake to a competitor", "Selling a minority stake/shares to a friendly entity not interested in taking full control", "Making a public tender offer for the acquirer", "Paying greenmail premium to hostile bidder"], "a": 1, "l": "hard"}, {"id": 58, "q": "In a reverse takeover, what typically characterizes the financial state of the absorbing company?", "o": ["It is always a cash-rich multinational", "It is often a loss-making/sick company whose accumulated losses offset future profits", "It has zero liabilities", "It is fully owned by central government"], "a": 1, "l": "hard"}, {"id": 59, "q": "What is the main strategy behind using 'Street Sweep' in takeovers?", "o": ["Making a public advertisement in newspapers", "Rapidly accumulating large share blocks in target firm before making open offer to leave target no choice", "Selling core divisions to friendly firms", "Pledging target assets to financial institutions"], "a": 1, "l": "hard"}, {"id": 60, "q": "In M&A financial evaluation, what does Price-to-Earnings (P/E) ratio indicate to an acquirer?", "o": ["Book value per share of target", "Amount investors are willing to pay per dollar of net earnings", "Total liquidation value of target assets", "Interest coverage capability of target"], "a": 1, "l": "hard"}, {"id": 61, "q": "Working capital is defined in accounting terminology as the difference between Current Assets and:", "o": ["Fixed Assets", "Long-term Liabilities", "Current Liabilities", "Paid-up Capital"], "a": 2, "l": "easy"}, {"id": 62, "q": "Which concept defines working capital as total investment in current assets?", "o": ["Net Working Capital concept", "Gross Working Capital concept", "Operating Cycle concept", "Financial Leverage concept"], "a": 1, "l": "easy"}, {"id": 63, "q": "Fluctuating working capital required to meet seasonal or special peak demands is known as:", "o": ["Permanent Working Capital", "Regular Working Capital", "Temporary Working Capital", "Reserve Working Capital"], "a": 2, "l": "easy"}, {"id": 64, "q": "The time required to convert raw materials into finished products is called the:", "o": ["Collection Cycle", "Production / Manufacturing Cycle", "Payable Cycle", "Cash Conversion Period"], "a": 1, "l": "easy"}, {"id": 65, "q": "The motive for holding cash to meet unexpected disbursements or contingencies is the:", "o": ["Transaction Motive", "Precautionary Motive", "Speculative Motive", "Compensation Motive"], "a": 1, "l": "easy"}, {"id": 66, "q": "Holding cash balance in a bank to satisfy loan agreement conditions is known as:", "o": ["Transaction Motive", "Speculative Motive", "Compensation Motive", "Precautionary Motive"], "a": 2, "l": "easy"}, {"id": 67, "q": "A system where customer payments are mailed to post office boxes managed by banks is called:", "o": ["Zero Balance Account", "Lock-Box System", "Draft Payment System", "Factoring System"], "a": 1, "l": "easy"}, {"id": 68, "q": "In credit policy terms '3/10 net 40', '3' represents:", "o": ["3% interest penalty", "3% cash discount for payment within 10 days", "3 months credit period", "3 days grace period"], "a": 1, "l": "easy"}, {"id": 69, "q": "A table listing receivables according to the age of outstanding bills is called an:", "o": ["Operating Schedule", "Aging Schedule", "Income Statement", "Cash Budget"], "a": 1, "l": "easy"}, {"id": 70, "q": "Selling book debts / receivables to a financial agent who collects them is called:", "o": ["Forfeiting", "Factoring", "Leasing", "Securitization"], "a": 1, "l": "easy"}, {"id": 71, "q": "What is the effect of an unusually lenient or loose credit policy on a firm?", "o": ["Decreases bad debts and increases liquidity", "Increases sales but leads to higher bad debts and locked funds in debtors", "Eliminates administrative collection costs", "Reduces working capital requirements"], "a": 1, "l": "medium"}, {"id": 72, "q": "How is the Debtors Holding Period (DHP) calculated?", "o": ["(Average Debtors / Net Credit Sales) * 365", "(Net Credit Sales / Average Debtors) * 365", "(Average Debtors / Total Purchases) * 365", "(Cash Sales / Average Debtors) * 365"], "a": 0, "l": "medium"}, {"id": 73, "q": "In working capital cycle, Net Operating Cycle equals Gross Operating Cycle minus:", "o": ["Inventory Holding Period", "Debtors Collection Period", "Payables Payment Period", "Raw Material Storage Period"], "a": 2, "l": "medium"}, {"id": 74, "q": "What are the two major components of 'Float' in cash management?", "o": ["Operating float and Financial float", "Collection float and Disbursement float", "Gross float and Net float", "Fixed float and Variable float"], "a": 1, "l": "medium"}, {"id": 75, "q": "Which cost in receivables management arises when customers delay payments beyond the due date, requiring reminders?", "o": ["Default Cost", "Delinquency Cost", "Capital Cost", "Production Cost"], "a": 1, "l": "medium"}, {"id": 76, "q": "Why is inadequate working capital considered more dangerous for a firm than redundant working capital?", "o": ["It reduces fixed asset valuation", "It leads to inability to pay short-term obligations, loss of reputation, and risk of insolvency", "It increases tax liability significantly", "It creates excess inventory accumulation"], "a": 1, "l": "hard"}, {"id": 77, "q": "In credit evaluation, what does the element 'Capacity' specifically refer to?", "o": ["The customer's moral character and integrity", "The customer's personnel, technological, and entrepreneurial ability to generate revenue and repay debt", "The tangible assets pledged as security", "The general economic environment"], "a": 1, "l": "hard"}, {"id": 78, "q": "What is the primary trade-off involved in establishing an Optimum Credit Policy?", "o": ["Trade-off between Fixed Assets and Current Assets", "Trade-off between incremental profitability from sales and credit administration/bad debt costs", "Trade-off between long-term debt and equity", "Trade-off between cash dividends and stock dividends"], "a": 1, "l": "hard"}, {"id": 79, "q": "In factoring, if the factor assumes the entire risk of bad debts without recourse to the client, it is termed:", "o": ["Recourse Factoring", "Non-Recourse Factoring", "Bank Factoring", "Reverse Factoring"], "a": 1, "l": "hard"}, {"id": 80, "q": "If Average Raw Material Inventory is $50,000 and Annual Material Usage is $365,000, what is the Raw Material Holding Period (RMHP)?", "o": ["30 days", "50 days", "60 days", "10 days"], "a": 1, "l": "hard"}];
+
+/* ============================ HELPERS ============================ */
+const $ = id => document.getElementById(id);
+const KEY = "afa_exam_state_v1";
+const LETTERS = ["A","B","C","D"];
+let S = null;            // current exam state
+let timerHandle = null;
+let away = false;        // true while the student is off the page
+let finishing = false;
+
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+function show(id){ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active")); $(id).classList.add("active"); window.scrollTo(0,0); }
+function save(){ if(S) localStorage.setItem(KEY, JSON.stringify(S)); }
+function fmt(n){ return Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0+$/,"").replace(/\.$/,""); }
+function uid(){ return "A" + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+const total = () => CONFIG.PICK.easy + CONFIG.PICK.medium + CONFIG.PICK.hard;
+const byId = id => BANK.find(q=>q.id===id);
+
+/* ============================ SCORING ============================ */
+function compute(){
+  let att=0, cor=0;
+  S.items.forEach(it=>{
+    const a = S.answers[it.id];
+    if(a!==undefined && a!==null){ att++; if(a===byId(it.id).a) cor++; }
+  });
+  const wro = att-cor, una = total()-att;
+  const raw = cor*CONFIG.MARKS_PER_QUESTION;
+  const maxMarks = total()*CONFIG.MARKS_PER_QUESTION;
+  const rate = CONFIG.TAB_SWITCH_PENALTY_PERCENT/100;
+  let final, penalty;
+  if(CONFIG.PENALTY_BASE==="obtained"){
+    final = raw; for(let i=0;i<S.switches;i++) final -= final*rate;
+    penalty = raw-final;
+  } else {
+    penalty = Math.min(raw, S.switches*maxMarks*rate);
+    final = raw-penalty;
+  }
+  final = Math.max(0, Math.round(final*100)/100);
+  penalty = Math.round(penalty*100)/100;
+  return {attempted:att, correct:cor, wrong:wro, unattempted:una, raw, penalty, final, maxMarks};
+}
+
+/* ============================ GOOGLE SHEET SYNC ============================ */
+function payload(status, submitType){
+  const c = compute();
+  return {
+    attemptId: S.attemptId, status, submitType: submitType||"",
+    name: S.name, regNo: S.reg, subject: CONFIG.SUBJECT,
+    attempted: c.attempted, correct: c.correct, wrong: c.wrong, unattempted: c.unattempted,
+    tabSwitches: S.switches, malpractice: S.switches>0 ? "Yes" : "No",
+    penaltyMarks: c.penalty, marksBeforePenalty: c.raw, finalMarks: c.final, totalMarks: c.maxMarks,
+    timeTakenSec: Math.min(CONFIG.EXAM_MINUTES*60, Math.round((Date.now()-S.startTime)/1000)),
+    clientTime: new Date().toISOString()
+  };
+}
+async function send(data, retries=3){
+  if(!CONFIG.SCRIPT_URL || CONFIG.SCRIPT_URL.startsWith("PASTE_")) return false;
+  for(let i=0;i<retries;i++){
+    try{
+      await fetch(CONFIG.SCRIPT_URL,{method:"POST",mode:"no-cors",keepalive:true,
+        headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});
+      return true;
+    }catch(e){ await new Promise(r=>setTimeout(r,1500*(i+1))); }
+  }
+  return false;
+}
+
+/* ============================ FLOW ============================ */
+$("pick-subject").onclick = ()=> show("s-details");
+$("back1").onclick = ()=> show("s-subject");
+
+$("start").onclick = ()=>{
+  const name = $("name").value.trim().replace(/\s+/g," ");
+  const reg  = $("reg").value.trim().toUpperCase();
+  if(name.length<3){ $("d-err").textContent="Please enter your full name."; return; }
+  if(!/^[A-Z0-9\/\-]{4,20}$/.test(reg)){ $("d-err").textContent="Enter a valid register number (letters, digits, - or / only)."; return; }
+  $("d-err").textContent="";
+
+  const pick = lvl => shuffle(BANK.filter(q=>q.l===lvl)).slice(0, CONFIG.PICK[lvl]);
+  const chosen = shuffle([...pick("easy"),...pick("medium"),...pick("hard")]);
+  S = {
+    attemptId: uid(), name, reg, startTime: Date.now(),
+    endTime: Date.now()+CONFIG.EXAM_MINUTES*60*1000,
+    switches: 0, answers:{}, cur:0, done:false,
+    items: chosen.map(q=>({id:q.id, order: shuffle([0,1,2,3])}))
+  };
+  save();
+  send(payload("In Progress"));
+  beginExam();
+};
+
+function beginExam(){
+  $("x-name").textContent=S.name; $("x-reg").textContent=S.reg;
+  $("legend").textContent = "Filled = answered · Outlined = current";
+  buildGrid(); render(); updateStrikes(); show("s-exam");
+  clearInterval(timerHandle); tick(); timerHandle=setInterval(tick,250);
+  history.pushState(null,"",location.href);
+}
+
+function updateStrikes(){
+  $("x-strikes").textContent = S.switches ? `Tab switches recorded: ${S.switches} (malpractice flagged)` : "";
+}
+
+function buildGrid(){
+  $("grid").innerHTML="";
+  S.items.forEach((it,i)=>{
+    const b=document.createElement("button"); b.className="pb"; b.textContent=i+1; b.id="pb"+i;
+    b.onclick=()=>{S.cur=i; save(); render();}; $("grid").appendChild(b);
+  });
+}
+function refreshGrid(){
+  S.items.forEach((it,i)=>{
+    const b=$("pb"+i);
+    b.classList.toggle("done", S.answers[it.id]!==undefined);
+    b.classList.toggle("cur", i===S.cur);
+  });
+}
+function render(){
+  const it=S.items[S.cur], q=byId(it.id);
+  $("qno").textContent=`Question ${S.cur+1} of ${total()}`;
+  $("qtext").textContent=q.q;
+  const box=$("opts"); box.innerHTML="";
+  it.order.forEach((oi,pos)=>{
+    const b=document.createElement("button"); b.className="opt"+(S.answers[it.id]===oi?" sel":"");
+    b.innerHTML=`<span class="k">${LETTERS[pos]}</span><span></span>`;
+    b.lastChild.textContent=q.o[oi];
+    b.onclick=()=>{S.answers[it.id]=oi; save(); render();};
+    box.appendChild(b);
+  });
+  $("prev").disabled = S.cur===0;
+  $("next").disabled = S.cur===total()-1;
+  refreshGrid();
+}
+$("prev").onclick=()=>{ if(S.cur>0){S.cur--; save(); render();} };
+$("next").onclick=()=>{ if(S.cur<total()-1){S.cur++; save(); render();} };
+$("clear").onclick=()=>{ delete S.answers[S.items[S.cur].id]; save(); render(); };
+
+function tick(){
+  if(!S||S.done) return;
+  const left=Math.max(0,Math.round((S.endTime-Date.now())/1000));
+  const m=String(Math.floor(left/60)).padStart(2,"0"), s=String(left%60).padStart(2,"0");
+  $("timer").textContent=`${m}:${s}`;
+  $("timer").classList.toggle("low", left<=60);
+  if(left<=0) finish("Auto (time up)");
+}
+
+/* ---------- submit ---------- */
+$("submit").onclick=()=>{
+  const c=compute();
+  $("confirm-text").textContent = c.unattempted
+    ? `You have ${c.unattempted} unanswered question(s). Once submitted you cannot change your answers.`
+    : "You have answered all questions. Once submitted you cannot change your answers.";
+  $("confirm").classList.add("show");
+};
+$("c-cancel").onclick=()=>$("confirm").classList.remove("show");
+$("c-ok").onclick=()=>{ $("confirm").classList.remove("show"); finish("Manual"); };
+
+async function finish(type){
+  if(finishing||!S||S.done) return;
+  finishing=true; S.done=true; save();
+  clearInterval(timerHandle);
+  $("warn").classList.remove("show"); $("confirm").classList.remove("show");
+  const c=compute();
+  $("r-who").textContent=`${S.name} · Register No. ${S.reg} · ${CONFIG.SUBJECT}`;
+  $("r-score").innerHTML=`${fmt(c.final)}<span> / ${c.maxMarks}</span>`;
+  $("r-att").textContent=c.attempted; $("r-cor").textContent=c.correct;
+  $("r-wro").textContent=c.wrong;     $("r-una").textContent=c.unattempted;
+  $("r-raw").textContent=fmt(c.raw);
+  $("r-pen").textContent = S.switches ? `− ${fmt(c.penalty)} (${S.switches} switch${S.switches>1?"es":""})` : "0";
+  $("r-mal").innerHTML = S.switches ? '<span class="flag">Yes</span>' : "No";
+  $("r-sync").textContent="Saving your result…";
+  show("s-result");
+  const ok = await send(payload("Submitted", type));
+  $("r-sync").textContent = ok ? "Your result has been recorded. You may now close this page."
+                               : "Result could not be sent to the server. Please inform your examiner and do not close this page.";
+  localStorage.removeItem(KEY);
+}
+
+/* ============================ TAB-SWITCH DETECTION ============================ */
+function registerSwitch(){
+  if(!S||S.done||finishing||!$("s-exam").classList.contains("active")) return;
+  if(away) return;                 // count each departure once
+  away=true;
+  S.switches++; save();
+  updateStrikes();
+  const c=compute();
+  $("warn-detail").innerHTML =
+    `Total tab switches so far: <b>${S.switches}</b>. Each switch deducts ${CONFIG.TAB_SWITCH_PENALTY_PERCENT}% of the marks `+
+    `(currently −${fmt(c.penalty)} mark${c.penalty===1?"":"s"}).`;
+  $("warn").classList.add("show");
+  send(payload("In Progress"));    // record immediately in Google Sheet
+}
+function returned(){ away=false; }
+document.addEventListener("visibilitychange",()=>{ document.hidden ? registerSwitch() : returned(); });
+window.addEventListener("blur",()=>{ setTimeout(()=>{ if(!document.hasFocus()) registerSwitch(); },60); });
+window.addEventListener("focus",returned);
+$("warn-ok").onclick=()=>$("warn").classList.remove("show");
+
+/* ============================ DETERRENTS ============================ */
+document.addEventListener("contextmenu",e=>{ if(S&&!S.done) e.preventDefault(); });
+document.addEventListener("copy",e=>{ if(S&&!S.done) e.preventDefault(); });
+window.addEventListener("beforeunload",e=>{ if(S&&!S.done){ e.preventDefault(); e.returnValue=""; } });
+window.addEventListener("popstate",()=>{ if(S&&!S.done) history.pushState(null,"",location.href); });
+
+/* ============================ RESUME AFTER REFRESH ============================ */
+(function resume(){
+  try{
+    const raw=localStorage.getItem(KEY); if(!raw) return;
+    const st=JSON.parse(raw);
+    if(!st||st.done) { localStorage.removeItem(KEY); return; }
+    S=st;
+    if(Date.now()>=S.endTime){ finish("Auto (time up)"); return; }
+    // Leaving the page (refresh / closing) counts as a switch
+    S.switches++; away=false; save(); send(payload("In Progress"));
+    beginExam();
+    $("warn-detail").innerHTML=`The page was reloaded or reopened. This has been counted as a tab switch. Total: <b>${S.switches}</b>.`;
+    $("warn").classList.add("show");
+  }catch(e){ localStorage.removeItem(KEY); }
+})();
+</script>
+</body>
+</html>
